@@ -105,7 +105,7 @@ class ApiClient(object):
     def configure_jwt_authorization_flow(self, private_key_filename, oauth_base_path, client_id, user_id, expires_in,
                                          key_bytes=None):
         now = math.floor(time())
-        later = now + (expires_in * 1000)
+        later = now + expires_in
         token = jwt.JWT(header={"alg": "RS256"},
                         claims={"iss": client_id, "sub": user_id, "aud": oauth_base_path, "iat": now, "exp": later, "scope": "signature"})
 
